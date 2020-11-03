@@ -1,0 +1,40 @@
+$font-weights: 500;
+
+.t-font {
+    &-family {
+        &--primary { font-family: $font-primary; }
+        &--secondary { font-family: $font-secondary; }
+    }
+    &-size {
+        @each $name, $font-size in $font-sizes {
+            &--#{$name} {
+                @each $mq, $size in $font-size {
+                    @include font-size($size);
+                }
+            }
+        }
+    }
+
+    &-weight {
+        @each $font-weight in $font-weights {
+            &--#{$font-weight} {
+                font-weight: #{$font-weight};
+            }
+        }
+    }
+
+    &-align {
+        &--left {
+            text-align: left;
+        }
+        &--center {
+            text-align: center;
+        }
+    }
+
+    &-style {
+        &--upper {
+            text-transform: uppercase;
+        }
+    }
+}

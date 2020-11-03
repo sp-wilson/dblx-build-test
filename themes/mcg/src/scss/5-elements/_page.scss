@@ -1,0 +1,54 @@
+///*----------------------------------*\
+//  #PAGE
+//\*----------------------------------*/
+//
+// Page-level styling (e.g. HTML and BODY elements).
+//
+//\*----------------------------------*/
+
+html {
+    overflow-x: hidden;
+    overflow-y: auto;
+    color: $colour-primary;
+    font-size: 62.5%;
+    font-weight: 300;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+    @include mq($mq-desk) {
+        overscroll-behavior-y: none;
+    }
+}
+
+body {
+    @include font-size($base-font-size, $base-line-height);
+    overflow: hidden;
+    font-family: $font-primary;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeSpeed;
+    letter-spacing: 0;
+
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media screen and (prefers-reduced-motion: reduce), (update: slow) {
+    // stylelint-disable
+    *,
+    ::before,
+    ::after {
+        transition-duration: 0.00001ms !important;
+        animation-duration: 0.00001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        animation-delay: -1ms !important;
+        background-attachment: initial !important;
+        transition-delay: 0s !important;
+    }
+
+    // stylelint-enable
+}

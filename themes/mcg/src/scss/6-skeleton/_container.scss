@@ -1,0 +1,62 @@
+.s-container {
+    $base-width: 1440;
+    $mobile-padding: $global-spacing-s;
+    $desktop-padding: $global-spacing / 2;
+
+    position: relative;
+    width: 100%;
+    max-width: #{$global-base-width}px;
+    margin: {
+        right: auto;
+        left: auto;
+    }
+    padding: {
+        right: $mobile-padding;
+        left: $mobile-padding;
+    }
+
+    @include mq($mq-desk--lrg) {
+        width: 100%;
+        padding: {
+            right: $desktop-padding;
+            left: $desktop-padding;
+        }
+    }
+
+    &--medium {
+        $width: 1100;
+        width: 100%;
+
+        @include mq($mq-desk--sml) {
+            width: calc(#{($width / 1440) * 100%} + #{$mobile-padding * 2});
+            max-width: #{$width}px;
+            padding: {
+                right: 0;
+                left: 0;
+            }
+        }
+    }
+
+    &--small {
+        $width: 900;
+        width: 100%;
+
+        @include mq($mq-tab--lrg) {
+            width: calc(#{($width / 1440) * 100%} + #{$mobile-padding * 2});
+            max-width: #{$width}px;
+            padding: {
+                right: 0;
+                left: 0;
+            }
+        }
+    }
+
+    &--full {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    &--inner-flush {
+        margin: 0 -$global-spacing;
+    }
+}

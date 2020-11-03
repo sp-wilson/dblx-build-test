@@ -1,0 +1,13 @@
+# Wordpress Specific Ignores
+
+/vendor
+/public/wordpress/
+/public/propeller/uploads/
+/public/propeller/plugins/
+/public/propeller/languages/
+/node_modules/
+/bower_components/
+
+src/propeller/themes/propeller/assets/scss/generic
+src/propeller/themes/propeller/assets/scss/elements
+src/propeller/themes/propeller/assets/scss/vendor

@@ -1,0 +1,44 @@
+///*----------------------------------*\
+//  #TYPE
+//\*----------------------------------*/
+//
+// Basic Typography styles
+//
+//\*----------------------------------*/
+
+p,
+li {
+    margin: 0 0 $global-spacing-s;
+    line-height: $base-line-height;
+}
+
+a {
+    color: inherit;
+    line-height: $base-line-height;
+
+    &,
+    &:active,
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+strong,
+b{
+    font-weight: 700;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 900;
+    line-height: $base-line-height;
+    text-transform: none;
+}
+
+small {
+    @include font-size($size-micro);
+}

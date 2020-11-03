@@ -1,0 +1,7 @@
+.c-nav {
+    position: relative;
+    display: flex;
+    &__item {
+        color: $colour_primary;
+    }
+}
