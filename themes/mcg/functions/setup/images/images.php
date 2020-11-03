@@ -79,7 +79,7 @@ add_theme_support( 'post-thumbnails' );
 add_image_size( 'loader', 12 ); //  Custom featured image size, crop mode  //
 add_image_size( 'navigation', 400 ); //  Custom featured image size, crop mode  //
 add_image_size( 'hero', 1450 ); //  Custom featured image size, crop mode  //
-add_image_size( 'banner', 1450 ); //  Custom featured image size, crop mode  //
+add_image_size( 'banner', 4000 ); //  Custom featured image size, crop mode  //
 add_image_size( 'banner-med', 1200); //  Custom featured image size, crop mode  //
 add_image_size( 'banner-sml', 800); //  Custom featured image size, crop mode  //
 add_image_size( 'xlarge', 1200 ); //  Custom featured image size, crop mode  //
