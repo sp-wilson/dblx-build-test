@@ -8,14 +8,8 @@
 # Project #
 ###################
 node_modules
-dist
 upload
-deploy.log
-config/shopify.yml
 npm-debug.log
-.env
-.env.*
-!.env.example
 
 
 # Compiled source #
