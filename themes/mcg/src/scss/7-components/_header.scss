@@ -1,9 +1,161 @@
+///*----------------------------------*\
+//  #HEADER
+//\*----------------------------------*/
+//
+//  Default Template Header.
+//  2 Header Options available:
+//
+//      HEADER OPTION 1
+//      | CTA | NAV | LOGO | NAV | CTA |
+//
+//      HEADER OPTION 2
+//      | LOGO | | NAV | | CTA | CTA |
+//
+//      Usage:
+//      <header class="c-header  c-header--sticky  js-header" role="banner"> ... </div>
+//      - `c-header--sticky` provides fixed header styling
+//      - `js-header` provides JS hooks for header functionality
+//
+//\*----------------------------------*/
+//
+
+$header-mq: $mq-mob--med;
+$header-mq-m: $mq-mob--lrg;
+$header-mq-l: $mq-desk--lrg;
+$header-bg: lighten($colour-primary, 40%);
+$header-logo-width: 230px;
+
 .c-header {
-    padding: $global-spacing-s;
-    
-    &__brand {
-        color: $colour-primary;
+    padding: $global-spacing-s 0;
+    background-color: $header-bg;
+
+    &--sticky {
+        @include _position(fixed, 0, 0, null, 0);
+        @include z-index(header);
+        width: 100%;
+        transform: translateZ(0);
+        will-change: transform;
+        transition: transform 0.5s;
+
+        &.is-hidden {
+            @include mq($header-mq-m, min) {
+                transform: translateY(-100%);
+            }
+        }
     }
 
+    &__container {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        width: 100%;
+        padding: 0 $global-spacing / 2;
+    }
 
+    &__brand {
+        display: flex;
+        margin-right: $global-spacing;
+
+        // Centralised Logo
+        &--island {
+            @include _position(relative, null, 0, null, 0);
+            width: $header-logo-width - 100;
+            margin-right: auto;
+            margin-left: 0;
+
+            @include mq($header-mq-l, min) {
+                position: absolute;
+                margin: auto;
+            }
+        }
+    }
+
+    &__nav {
+        display: flex;
+        flex-grow: 1;
+        justify-content: flex-end;
+
+        @include mq($header-mq, min) {
+            order: 1;
+        }
+        @include mq($header-mq-l, min) {
+            width: auto;
+        }
+
+        // Centralised Logo
+        &--secondary {
+            width: 100%;
+            padding: 0 $global-spacing-s;
+
+            @include mq($header-mq, min) {
+                order: 0;
+            }
+            @include mq($header-mq-l, min) {
+                width: auto;
+            }
+
+            .is-centre {
+                &::before {
+                    // stylelint-disable-next-line
+                    @include mq($header-mq-l, min) {
+                        content: "";
+                        display: flex;
+                        width: $header-logo-width;
+                    }
+                }
+            }
+        }
+    }
+
+    &__cta {
+        display: flex;
+        flex-grow: 1;
+        justify-content: space-around;
+        width: 100%;
+
+        @include mq($header-mq, min) {
+            justify-content: flex-end;
+            width: auto;
+        }
+        @include mq($header-mq-l, min) {
+            order: 1;
+        }
+
+        &--left {
+            justify-content: flex-start;
+            order: 1;
+        }
+        &--split {
+            flex-grow: 0;
+            width: calc(50% - #{$global-spacing-s});
+            margin: auto;
+
+            @include mq($header-mq-l, min) {
+                order: 0;
+                width: auto;
+            }
+        }
+    }
+
+    &__btn {
+        @include font-size($size-milli);
+        width: 50%;
+        padding: 0 $global-spacing-s;
+
+        @include mq($header-mq, min) {
+            width: auto;
+        }
+
+        &--full {
+            width: 100%;
+
+            @include mq($header-mq-l, min) {
+                width: auto;
+            }
+        }
+
+        &:not(:first-child) {
+            margin-left: $global-spacing / 4;
+        }
+    }
 }

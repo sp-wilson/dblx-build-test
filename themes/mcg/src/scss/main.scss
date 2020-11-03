@@ -2,24 +2,26 @@
 
 //============================
 //*	$SETTINGS
-//	Preprocessor variables and methods
 //
+
 @import "1-settings/global";
 
 //============================
 //*	$Design Tokens 
-//	Preprocessor variables and methods
 //
+
+@import "2-design-tokens/animation";
 @import "2-design-tokens/colours";
 @import "2-design-tokens/fonts";
 @import "2-design-tokens/mq";
 @import "2-design-tokens/spacing";
 @import "2-design-tokens/typography";
+@import "2-design-tokens/zindex";
 
 //============================
 //*	$Tools
-//	Preprocessor variables and methods
 //
+
 @import "3-tools/functions";
 @import "3-tools/font_size";
 @import "3-tools/zindex";
@@ -30,7 +32,6 @@
 
 //============================
 //*	$Generic
-//	Preprocessor variables and methods
 //
 
 @import "4-generic/reset";
@@ -38,15 +39,7 @@
 
 //============================
 //*	$SETTINGS
-//	Preprocessor variables and methods
 //
-// ├── 5-elements
-// │   ├── _forms.scss
-// │   ├── _headings.scss
-// │   ├── _images.scss
-// │   ├── _links.scss
-// │   └── _lists.scss
-// │   ├── ...
 
 @import "5-elements/page";
 @import "5-elements/address";
@@ -56,42 +49,42 @@
 @import "5-elements/typography";
 @import "5-elements/table";
 @import "5-elements/type";
+
 //============================
 //*	$Skeleton
-//	Preprocessor variables and methods
 //
 
 @import "6-skeleton/container";
+@import "6-skeleton/flex";
+@import "6-skeleton/row";
+@import "6-skeleton/grid";
+@import "6-skeleton/media";
+@import "6-skeleton/flex-media";
+@import "6-skeleton/img";
+@import "6-skeleton/main";
 
-// │   ├── _grid.scss
-// │   ├── _layouts.scss
-// │   └── _objects.scss
 
 //============================
 //*	$Components
-//	Preprocessor variables and methods
 //
-// ├── 7-components
-// │   ├── _accordion.scss
-// │   ├── _card.scss
-// │   ├── _hero.scss
-// │   ├── _pan-galactic-gargle-blaster.scss
-// │   └── ...
-@import "7-components/header";
+
 @import "7-components/brand";
-@import "7-components/nav";
+@import "7-components/carousel";
 @import "7-components/footer";
+@import "7-components/hamburger";
+@import "7-components/header";
+@import "7-components/ico";
+@import "7-components/nav";
+@import "7-components/pager";
+@import "7-components/video";
 
 //============================
-//*	$SETTINGS
-//	Preprocessor variables and methods
+//*	$utilities
 //
-// ├── 8-utilities
-// │   ├── _modifiers.scss
-// │   └── _states.scss
+
+@import "8-utilities/util";
 
 //============================
-//*	$TOOLS
-//	Mixins and functions
-//
+//*	$Shame
+
 @import "shame";

@@ -23,7 +23,6 @@ module.exports = {
     devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, `../themes/${THEME_NAME}/dist`),
-        filename: 'main.min.js'
     },
     module:{
         rules: [
@@ -75,6 +74,10 @@ module.exports = {
                     from: `./themes/${THEME_NAME}/src/img`,
                     to: `img/`
                 },
+                {
+                    from: `./themes/${THEME_NAME}/src/fonts`,
+                    to: `fonts/`
+                },
         ],
     }),
         new BrowserSyncPlugin({
@@ -82,8 +85,20 @@ module.exports = {
             host: 'http://localhost',
             port: 3000,
             logLevel: 'silent',
-            files: ['./*.php'],
             proxy: 'http://localhost:8080/',
+            files: [
+                {
+                    match: [
+                        '**/*.php'
+                    ],
+                    fn: function(event, file) {
+                        if (event === "change") {
+                            const bs = require('browser-sync').get('bs-webpack-plugin');
+                            bs.reload();
+                        }
+                    }
+                }
+            ]
         })
    ]
 };
