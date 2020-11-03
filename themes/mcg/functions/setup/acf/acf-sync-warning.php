@@ -32,7 +32,7 @@ function acf_sync_warning() {
 
     if(empty($sync)) return;
 
-    if (is_admin() && ENVIRONMENT === 'development' ) {
+    if (is_admin() ) {
         add_action('admin_notices', function () {
             echo '<div class="notice notice-error"><h1><strong>Warning: ACF Needs Syncing!</strong> <a href="' . site_url() . '/wp-admin/edit.php?post_type=acf-field-group&post_status=sync">Sync now</a></h1></div>';
         });

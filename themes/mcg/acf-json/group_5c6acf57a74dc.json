@@ -1,0 +1,46 @@
+{
+    "key": "group_5c6acf57a74dc",
+    "title": "Rewrites",
+    "fields": [
+        {
+            "key": "field_5c6acff09f193",
+            "label": "Pages",
+            "name": "pages",
+            "type": "post_object",
+            "instructions": "Please select any pages which contain the menus region. This is needed to create SEO friendly URLs for menu pages.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "page"
+            ],
+            "taxonomy": "",
+            "allow_null": 0,
+            "multiple": 1,
+            "return_format": "object",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "rewrites"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "Rewrite URL option page settings",
+    "modified": 1556784459
+}

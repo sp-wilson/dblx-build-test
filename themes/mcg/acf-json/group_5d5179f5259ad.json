@@ -1,0 +1,53 @@
+{
+    "key": "group_5d5179f5259ad",
+    "title": "Object - Push Region",
+    "fields": [
+        {
+            "key": "field_5d517a057fc2f",
+            "label": "Push Region?",
+            "name": "push_region",
+            "type": "select",
+            "instructions": "Select the type of spacing you would like between this region and the next.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "n": "N\/A",
+                "s": "Near",
+                "default": "Default",
+                "l": "Far"
+            },
+            "default_value": [
+                "default"
+            ],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 1,
+            "ajax": 0,
+            "return_format": "value",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 0,
+    "description": "",
+    "modified": 1565620778
+}

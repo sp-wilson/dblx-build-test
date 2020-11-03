@@ -1,0 +1,67 @@
+///*----------------------------------*\
+//  #PAGER
+//\*----------------------------------*/
+//
+//  Pager Status for use on Carousels/Sliders etc (also referred to as Dot Navigation)
+//
+//\*----------------------------------*/
+//
+//  Usage:
+//
+// <div class="c-pager">
+//      <div class="c-pager__status"> ... </div>
+// </div>
+
+$pager-dimensions: 15px;
+$pager-colour: $colour-tertiary;
+$pager-colour-secondary: $colour-primary;
+$timing: 300ms;
+
+.c-pager {
+    @include _position(absolute, null, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    padding: $global-spacing-s;
+    color: $pager-colour;
+
+    &--secondary {
+        position: relative;
+        color: $pager-colour-secondary;
+    }
+
+    &__status {
+        position: relative;
+        display: inline-flex;
+        width: $pager-dimensions;
+        height: $pager-dimensions;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        cursor: pointer;
+
+        & + & {
+            margin-left: $global-spacing-s;
+        }
+
+        /* stylelint-disable-next-line */
+        &::after {
+            content: "";
+            @include _position(absolute, 0, 0, 0, 0);
+            display: block;
+            width: $pager-dimensions;
+            height: $pager-dimensions;
+            margin: -1px;
+            background-color: currentColor;
+            border-radius: 50%;
+            transform: scale(0.4);
+            transition: all $timing $linear;
+        }
+
+        &:hover,
+        &[aria-current] {
+            /* stylelint-disable-next-line */
+            &::after {
+                transform: scale(1);
+            }
+        }
+    }
+}

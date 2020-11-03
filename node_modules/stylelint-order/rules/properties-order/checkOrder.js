@@ -2,20 +2,26 @@ const postcss = require('postcss');
 const _ = require('lodash');
 const checkAlphabeticalOrder = require('../checkAlphabeticalOrder');
 
-module.exports = function checkOrder({ firstPropData, secondPropData, allPropData, unspecified }) {
-	function report(result, firstNode = firstPropData, secondNode = secondPropData) {
+// eslint-disable-next-line consistent-return
+module.exports = function checkOrder({
+	firstPropertyData,
+	secondPropertyData,
+	allPropertiesData,
+	unspecified,
+}) {
+	function report(isCorrect, firstNode = firstPropertyData, secondNode = secondPropertyData) {
 		return {
-			result,
+			isCorrect,
 			firstNode,
 			secondNode,
 		};
 	}
 
-	if (firstPropData.unprefixedName === secondPropData.unprefixedName) {
+	if (firstPropertyData.unprefixedName === secondPropertyData.unprefixedName) {
 		// If first property has no prefix and second property has prefix
 		if (
-			!postcss.vendor.prefix(firstPropData.name).length &&
-			postcss.vendor.prefix(secondPropData.name).length
+			!postcss.vendor.prefix(firstPropertyData.name).length &&
+			postcss.vendor.prefix(secondPropertyData.name).length
 		) {
 			return report(false);
 		}
@@ -23,69 +29,73 @@ module.exports = function checkOrder({ firstPropData, secondPropData, allPropDat
 		return report(true);
 	}
 
-	const firstPropIsUnspecified = !firstPropData.orderData;
-	const secondPropIsUnspecified = !secondPropData.orderData;
+	const firstPropIsSpecified = Boolean(firstPropertyData.orderData);
+	const secondPropIsSpecified = Boolean(secondPropertyData.orderData);
 
 	// Check actual known properties
-	if (!firstPropIsUnspecified && !secondPropIsUnspecified) {
+	if (firstPropIsSpecified && secondPropIsSpecified) {
 		return report(
-			firstPropData.orderData.expectedPosition <= secondPropData.orderData.expectedPosition
+			firstPropertyData.orderData.expectedPosition <=
+				secondPropertyData.orderData.expectedPosition
 		);
 	}
 
-	if (firstPropIsUnspecified && !secondPropIsUnspecified) {
+	if (!firstPropIsSpecified && secondPropIsSpecified) {
 		// If first prop is unspecified, look for a specified prop before it to
 		// compare to the current prop
-		const priorSpecifiedPropData = _.findLast(allPropData.slice(0, -1), d => Boolean(d.orderData));
+		const priorSpecifiedPropData = _.findLast(allPropertiesData.slice(0, -1), (d) =>
+			Boolean(d.orderData)
+		);
 
 		if (
 			priorSpecifiedPropData &&
 			priorSpecifiedPropData.orderData &&
-			priorSpecifiedPropData.orderData.expectedPosition > secondPropData.orderData.expectedPosition
+			priorSpecifiedPropData.orderData.expectedPosition >
+				secondPropertyData.orderData.expectedPosition
 		) {
-			return report(false, priorSpecifiedPropData, secondPropData);
+			return report(false, priorSpecifiedPropData, secondPropertyData);
 		}
 	}
 
 	// Now deal with unspecified props
 	// Starting with bottomAlphabetical as it requires more specific conditionals
-	if (unspecified === 'bottomAlphabetical' && !firstPropIsUnspecified && secondPropIsUnspecified) {
+	if (unspecified === 'bottomAlphabetical' && firstPropIsSpecified && !secondPropIsSpecified) {
 		return report(true);
 	}
 
-	if (unspecified === 'bottomAlphabetical' && firstPropIsUnspecified && secondPropIsUnspecified) {
-		if (checkAlphabeticalOrder(firstPropData, secondPropData)) {
+	if (unspecified === 'bottomAlphabetical' && !firstPropIsSpecified && !secondPropIsSpecified) {
+		if (checkAlphabeticalOrder(firstPropertyData, secondPropertyData)) {
 			return report(true);
 		}
 
 		return report(false);
 	}
 
-	if (unspecified === 'bottomAlphabetical' && firstPropIsUnspecified) {
+	if (unspecified === 'bottomAlphabetical' && !firstPropIsSpecified) {
 		return report(false);
 	}
 
-	if (firstPropIsUnspecified && secondPropIsUnspecified) {
+	if (!firstPropIsSpecified && !secondPropIsSpecified) {
 		return report(true);
 	}
 
-	if (unspecified === 'ignore' && (firstPropIsUnspecified || secondPropIsUnspecified)) {
+	if (unspecified === 'ignore' && (!firstPropIsSpecified || !secondPropIsSpecified)) {
 		return report(true);
 	}
 
-	if (unspecified === 'top' && firstPropIsUnspecified) {
+	if (unspecified === 'top' && !firstPropIsSpecified) {
 		return report(true);
 	}
 
-	if (unspecified === 'top' && secondPropIsUnspecified) {
+	if (unspecified === 'top' && !secondPropIsSpecified) {
 		return report(false);
 	}
 
-	if (unspecified === 'bottom' && secondPropIsUnspecified) {
+	if (unspecified === 'bottom' && !secondPropIsSpecified) {
 		return report(true);
 	}
 
-	if (unspecified === 'bottom' && firstPropIsUnspecified) {
+	if (unspecified === 'bottom' && !firstPropIsSpecified) {
 		return report(false);
 	}
 };

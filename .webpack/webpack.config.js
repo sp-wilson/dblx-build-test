@@ -12,51 +12,71 @@ const THEME_NAME = "mcg";
 
 module.exports = {
     target: "web",
-    entry: `./themes/${THEME_NAME}/src/entry.js`,
+    entry: {
+        main: [
+            `./themes/${THEME_NAME}/src/js/index.ts`,
+            `./themes/${THEME_NAME}/src/scss/main.scss`,
+        ],
+        "polyfills-es5": `./themes/${THEME_NAME}/src/js/polyfills-es5.ts`,
+    },
+    
     devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, `../themes/${THEME_NAME}/dist`),
-        filename: 'scripts.min.js'
+        filename: 'main.min.js'
     },
     module:{
         rules: [
             {
-            test:  /\.s?css$/,
-               use: [
+                test: /\.([tj]sx?|mjs)$/,
+                use: [
                     {
-                        loader: MiniCssExtractPlugin.loader
+                        loader: "babel-loader",
+                        options: { babelrc: false },
                     },
-                    {
-                        loader: "css-loader"
-                    },
-                    {
-                        loader: "postcss-loader"
-
-                    },
-                    {
-                        loader: "sass-loader"
-                    }
-                ]
+                ],
             },
             {
-            test: /\.js$/,
-            exclude: /node_modules/,
-                use: {
-                    loader: 'babel-loader',
-                    options: {
-                    presets: ['@babel/preset-env']
-                    }
-                }
+                test: /\.s?css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: true,
+                        },
+                    },
+                    {
+                        loader: "css-loader",
+                        options: { url: false },
+                    },
+                    {
+                        loader: "postcss-loader",
+                    },
+                    {
+                        loader: "sass-loader",
+                    },
+                ],
             }
         ]
-   },
+    },
+    resolve: {
+        extensions: [".js", ".json", ".ts", ".tsx", ".scss"],
+        alias: {
+            "@":path.resolve(__dirname, `../themes/${THEME_NAME}/src/js`),
+        },
+    },
    plugins: [
         new MiniCssExtractPlugin({
             filename: "style.min.css",
         }),
-        new CopyPlugin([
-            { from: `./themes/${THEME_NAME}/src/img`, to: `img/` },
-        ]),
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: `./themes/${THEME_NAME}/src/img`,
+                    to: `img/`
+                },
+        ],
+    }),
         new BrowserSyncPlugin({
             notify: false,
             host: 'http://localhost',
