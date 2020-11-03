@@ -8,6 +8,8 @@
         <?php wp_head();?>
         <!-- styling here  -->
         <link rel="stylesheet" href="<?= get_template_directory_uri(); ?>/dist/style.min.css" type="text/css" media="all">
+
+        <script src="<?= get_template_directory_uri(); ?>/dist/main.js" defer></script>
     </head>
 
     <body <? body_class('js-page'); ?>itemscope itemtype="http://schema.org/WebPage">
