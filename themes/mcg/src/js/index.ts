@@ -1,4 +1,3 @@
-import "./utils/public-path";
 import "focus-visible";
 
 import { throttle } from "@/utils";
@@ -7,10 +6,10 @@ import Carousel from "./main/carousel";
 import Lazyload from "./main/lazyload";
 import Video from "./main/video";
 
-const propClasses = [Accordion, Carousel, Lazyload, Video];
+const classes = [Accordion, Carousel, Lazyload, Video];
 
-for (const PropClass of propClasses) {
-    new PropClass();
+for (const Class of classes) {
+    new Class();
 }
 
 (function () {

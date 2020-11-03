@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { get, getAll } from "./utils";
+import { get, getAll } from "@/utils";
 import Flickpity from "./Flickpity";
 
 export class Carousel {

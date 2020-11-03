@@ -35,8 +35,6 @@ function getRootId(root?: Element | null) {
  * @param options.threshold {Number} Number between 0 and 1, indicating how much of the element should be inView before triggering
  * @param options.root {HTMLElement}
  * @param options.rootMargin {String} The CSS margin to apply to the root element.
- *
- * @returns {ObserverInstance | undefined}
  */
 export function observe(
     element: Element,
@@ -45,11 +43,10 @@ export function observe(
 ) {
     // IntersectionObserver needs a threshold to trigger, so set it to 0 if it's not defined.
     // Modify the options object, since it's used in the onChange handler.
-    const { root, rootMargin, threshold = 0 } = options;
+    if (!options.threshold) options.threshold = 0;
+    const { root, rootMargin, threshold } = options;
 
-    // Bail early if element is undefined
     if (!element) return;
-
     // Create a unique ID for this observer instance, based on the root, root margin and threshold.
     // An observer with the same options can be reused, so lets use this fact
     const observerId: string =
@@ -70,7 +67,7 @@ export function observe(
         observer: observerInstance,
         // Make sure we have the thresholds value. It's undefined on a browser like Chrome 51.
         thresholds:
-            observerInstance.thresholds || (Array.isArray(threshold) ? threshold : [threshold]),
+            observerInstance.thresholds || (Array.isArray(threshold) ? threshold : [threshold])
     };
 
     INSTANCE_MAP.set(element, instance);
@@ -126,7 +123,7 @@ export function unobserve(element: Element | null) {
  * Destroy all IntersectionObservers currently connected
  * */
 export function destroy() {
-    OBSERVER_MAP.forEach((observer) => {
+    OBSERVER_MAP.forEach(observer => {
         observer.disconnect();
     });
 
@@ -137,14 +134,14 @@ export function destroy() {
 }
 
 function onChange(changes: IntersectionObserverEntry[]) {
-    changes.forEach((intersection) => {
+    changes.forEach(intersection => {
         const { isIntersecting, intersectionRatio, target } = intersection;
         const instance = INSTANCE_MAP.get(target);
 
         // Firefox can report a negative intersectionRatio when scrolling.
         if (instance && intersectionRatio >= 0) {
             // If threshold is an array, check if any of them intersects. This just triggers the onChange event multiple times.
-            let inView = instance.thresholds.some((threshold) => {
+            let inView = instance.thresholds.some(threshold => {
                 return instance.inView
                     ? intersectionRatio > threshold
                     : intersectionRatio >= threshold;
@@ -165,5 +162,5 @@ function onChange(changes: IntersectionObserverEntry[]) {
 export default {
     observe,
     unobserve,
-    destroy,
+    destroy
 };

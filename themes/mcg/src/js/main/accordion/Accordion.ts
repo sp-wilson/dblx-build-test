@@ -1,4 +1,4 @@
-import { getAll } from "./utils";
+import { getAll } from "@/utils";
 
 export default class Accordion {
     element: HTMLElement;
