@@ -29,7 +29,7 @@
 <section class="o-row  o-row--<?= $pusher ?>" data-layout="<?= $row['acf_fc_layout']; ?>">
 
     <div class="c-carousel">
-        <div class="c-carousel__slider  js-carousel" data-set-gallery-size <?= $autoplay ? "data-autoplay" : null; ?> <?= $carousel_mq ? "data-carousel-mq=\"{$carousel_mq}\"" : null; ?>>
+        <div class="c-carousel__slider  js-carousel" data-set-gallery-size <?= $autoplay ? "data-autoplay" : null; ?> <?= $carousel_mq ? "data-carousel-mq=\"{$carousel_mq}\"" : null; ?> data-settings="setGallerySize autoPlay watchCss">
 
             <?php foreach ( $slides as $slide ): ?>
                 <div class="c-carousel__slide  c-carousel__slide--banner">
@@ -76,23 +76,6 @@
                 include get_template_directory() . '/components/banner/content.php';
             ?>
 
-        <?php endif; ?>
-
-        <?php if (count($slides) > 1): ?>
-            <div class="c-pager  js-carousel-pager">
-                <?php for ($key = 0; $key < count($slides); $key++) : ?>
-                    <button class="c-pager__status" data-slide="<?= $key; ?>" aria-label="Page <?= $key; ?>." <?= $key === 0 ? 'aria-current="step"' : null; ?>></button>
-                <?php endfor; ?>
-            </div><!-- /c-carousel__pager -->
-
-            <div class="c-carousel__nav  c-carousel__nav--overlay">
-                <button class="c-carousel__arrow  c-carousel__arrow--prev  js-carousel-arrow" data-carousel-direction="prev" aria-label="Previous slide">
-                    <svg class="c-ico"><use xlink:href="#icon-arrow-left"></use></svg>
-                </button>
-                <button class="c-carousel__arrow  c-carousel__arrow--next  js-carousel-arrow" data-carousel-direction="next" aria-label="Next slide">
-                    <svg class="c-ico"><use xlink:href="#icon-arrow-right"></use></svg>
-                </button>
-            </div>
         <?php endif; ?>
 
     </div>

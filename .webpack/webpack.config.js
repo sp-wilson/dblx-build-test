@@ -9,20 +9,19 @@ const chokidar = require("chokidar");
 
 // Theme
 const THEME_NAME = "mcg";
+const THEME_PATH = `./themes/${THEME_NAME}/assets/`;
 
 module.exports = {
     target: "web",
     entry: {
         main: [
-            `./themes/${THEME_NAME}/src/js/index.ts`,
-            `./themes/${THEME_NAME}/src/scss/main.scss`,
+            `${THEME_PATH}/src/js/index.ts`,
+            `${THEME_PATH}/src/scss/main.scss`,
         ],
-        "polyfills-es5": `./themes/${THEME_NAME}/src/js/polyfills-es5.ts`,
+        "polyfills-es5": `${THEME_PATH}/src/js/polyfills-es5.ts`,
     },
-    
-    devtool: 'inline-source-map',
     output: {
-        path: path.resolve(__dirname, `../themes/${THEME_NAME}/dist`),
+        path: path.resolve(__dirname, `.${THEME_PATH}`),
     },
     module:{
         rules: [
@@ -61,25 +60,16 @@ module.exports = {
     resolve: {
         extensions: [".js", ".json", ".ts", ".tsx", ".scss"],
         alias: {
-            "@":path.resolve(__dirname, `../themes/${THEME_NAME}/src/js`),
+            "@":path.resolve(__dirname, `.${THEME_PATH}/src/js`),
         },
+    },
+    watchOptions: {
+        ignored: /node_modules/,
     },
    plugins: [
         new MiniCssExtractPlugin({
             filename: "style.min.css",
         }),
-        new CopyPlugin({
-            patterns: [
-                {
-                    from: `./themes/${THEME_NAME}/src/img`,
-                    to: `img/`
-                },
-                {
-                    from: `./themes/${THEME_NAME}/src/fonts`,
-                    to: `fonts/`
-                },
-        ],
-    }),
         new BrowserSyncPlugin({
             notify: false,
             host: 'http://localhost',

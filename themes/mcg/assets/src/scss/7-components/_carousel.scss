@@ -1,0 +1,250 @@
+///*----------------------------------*\
+//  #CAROUSEL
+//\*----------------------------------*/
+//
+//  Controls basic setup for site-wide Carousels
+//
+//\*----------------------------------*/
+//
+//  Usage:
+//
+// <div class="c-carousel">
+//     <div class="c-carousel__slider  js-carousel">
+//         <div class="c-carousel__slide"> ... </div>
+//     </div>
+// </div>
+
+// The carousel will be default on mobile and will deactivate on larger screens
+$carousel-deactivate: $mq-desk--med; // Deactivate Carousel
+$carousel-gutter: $global-spacing / 2;
+$carousel-btn-dimensions: 32px;
+$timing: 300ms;
+
+// This controls the point at which you want to set how many columns the cards will display at specific viewports
+// accepts MQ and Number of Columns
+$prop-config: deep-map-merge(
+    (
+        "secondary": (
+            "layout": (
+                ($mq-mob--lrg, 6),
+                ($carousel-deactivate, 4)
+            ),
+            "padding": (
+                0 $carousel-gutter
+            )
+        ),
+        "tertiary": (
+            "layout": (
+                ($mq-mob--med, 6),
+                ($mq-tab--sml, 4),
+                ($carousel-deactivate, 2)
+            ),
+            "padding": 0
+        ),
+        "gallery": (
+            "layout": (
+                ($mq-mob--med, 6),
+                ($mq-tab--sml, 4),
+                ($carousel-deactivate, 3)
+            ),
+            "padding": (
+                0 $carousel-gutter
+            )
+        )
+    ),
+    $prop-config,
+    true
+);
+
+.c-carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+    &__slider {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        overflow: hidden;
+
+        &::after {
+            content: "flickity";
+            display: none;
+        }
+
+        &[data-carousel-mq="disabled"] {
+            &::after {
+                content: "";
+            }
+        }
+
+        &[data-carousel-mq="mq-mob--lrg"] {
+            &::after {
+                content: "";
+            }
+
+            @include mq($mq-mob--lrg, max) {
+                &::after {
+                    content: "flickity";
+                    display: none;
+                }
+            }
+        }
+
+        &[data-carousel-mq="mq-tab--lrg"] {
+            &::after {
+                content: "";
+            }
+
+            @include mq($mq-tab--lrg, max) {
+                &::after {
+                    content: "flickity";
+                    display: none;
+                }
+            }
+        }
+
+        &[data-carousel-mq="mq-desk--med"] {
+            &::after {
+                content: "";
+            }
+
+            @include mq($mq-desk--med, max) {
+                &::after {
+                    content: "flickity";
+                    display: none;
+                }
+            }
+        }
+
+        &[data-carousel-mq="mq-desk--lrg"] {
+            &::after {
+                content: "";
+            }
+
+            @include mq($mq-desk--lrg, max) {
+                &::after {
+                    content: "flickity";
+                    display: none;
+                }
+            }
+        }
+
+        // stylelint-disable-next-line
+        .flickity-enabled {
+            display: block;
+        }
+        // stylelint-disable-next-line
+        .flickity-viewport {
+            width: 100%;
+            transition: height $timing $ease-in-out;
+        }
+
+        &--gallery {
+            padding: 0 $global-spacing-m;
+            overflow: visible;
+        }
+    }
+
+    &__slide {
+        position: relative;
+        width: 100%;
+
+        // stylelint-disable-next-line
+        .flickity-ready & {
+            height: 100%;
+        }
+
+        @each $key, $value in $prop-config {
+            $var: index(($prop-config), ($key $value));
+            $modifier: $key;
+
+            $layout: get("#{$modifier}.layout");
+            $padd: get("#{$modifier}.padding");
+
+            @each $class in $modifier {
+                @each $items in $layout {
+                    $mq: nth($items, 1);
+                    $cols: nth($items, 2);
+
+                    // stylelint-disable
+                    &--#{$class} {
+                        padding: #{$padd};
+
+                        @include mq($mq, min) {
+                            @include reset-flush-cols-to($cols);
+                        }
+                    }
+                    // stylelint-enable
+                }
+            }
+        }
+
+        &--banner {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            padding-bottom: 51%;
+
+           
+        }
+
+        &--gallery {
+            height: 300px;
+        }
+    }
+
+    &__nav {
+        display: none;
+        justify-content: flex-end;
+        margin: $carousel-gutter;
+
+        // Show Carousel Buttons if Flickity is enabled
+        // stylelint-disable-next-line
+        .flickity-enabled ~ & {
+            display: flex;
+        }
+
+        .c-carousel__slider--gallery ~ & {
+            margin: 0;
+        }
+
+        // Position Arrows on top of carousel
+        &--overlay {
+            @include _position(absolute, 0, 0, 0, 0);
+            align-items: center;
+            justify-content: space-between;
+            padding: $global-spacing-s;
+            pointer-events: none;
+        }
+    }
+
+    &__img {
+        @include _position(absolute, 0, 0, 0, 0);
+    }
+
+    &__arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        width: $carousel-btn-dimensions;
+        height: $carousel-btn-dimensions;
+
+        & + & {
+            margin-left: $carousel-gutter;
+        }
+    }
+
+    // stylelint-disable-next-line
+    .flickity-button {
+        @include z-index(gallery);
+        width: $carousel-btn-dimensions;
+        height: $carousel-btn-dimensions;
+        background: transparent;
+    }
+}
