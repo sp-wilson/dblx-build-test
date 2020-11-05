@@ -26,7 +26,7 @@
 
 ?>
 
-<section class="o-row  o-row--<?= $pusher ?>" data-layout="<?= $row['acf_fc_layout']; ?>">
+<section class="o-row  o-row--n" data-layout="<?= $row['acf_fc_layout']; ?>">
 
     <div class="c-carousel">
         <div class="c-carousel__slider  js-carousel" data-set-gallery-size <?= $autoplay ? "data-autoplay" : null; ?> <?= $carousel_mq ? "data-carousel-mq=\"{$carousel_mq}\"" : null; ?> data-settings="setGallerySize autoPlay watchCss">

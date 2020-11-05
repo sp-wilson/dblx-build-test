@@ -187,10 +187,7 @@ $prop-config: deep-map-merge(
             align-items: center;
             justify-content: center;
             width: 100%;
-            height: 100%;
-            padding-bottom: 51%;
-
-           
+            height: 100vh;
         }
 
         &--gallery {
