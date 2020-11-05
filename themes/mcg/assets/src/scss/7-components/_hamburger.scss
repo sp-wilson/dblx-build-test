@@ -55,14 +55,16 @@ $burger-line: 4px;
         #{$self}__patty {
             height: $burger-line / 2;
             background-color: $colour-primary;
+
             &--top {
-                transform: scaleY(0.5) translateY(9.5px);
-                transition: transform 0.075s ease, opacity 0.075s 0.12s ease;
-                opacity: 0;
+                transform: rotate(45deg);
+                transition-delay: 0.12s;
+                transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
             }
 
             &--bottom {
-                bottom: 9.5px;
+                bottom: 12.5px;
+                width: $burger-width;
                 transform: rotate(-45deg);
                 transition: bottom 0.075s ease,
                     transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);

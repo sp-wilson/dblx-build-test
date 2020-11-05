@@ -6807,12 +6807,35 @@ class Navigation {
   constructor(element) {
     Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "nav", void 0);
 
+    Object(_babel_runtime_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_0__["default"])(this, "trigger", void 0);
+
     this.nav = element;
-    console.log(this.nav);
-    this.bindEvents();
+    this.trigger = document.querySelector('.js-nav-toggle');
+    if (this.trigger) this.bindEvents(this.trigger);
   }
 
-  bindEvents() {}
+  bindEvents(trigger) {
+    trigger.addEventListener('click', () => {
+      this.toggleNav();
+      this.updateTrigger(trigger);
+    });
+  }
+
+  toggleNav() {
+    if (this.nav.classList.contains('is-active')) {
+      this.nav.classList.remove('is-active');
+    } else {
+      this.nav.classList.add('is-active');
+    }
+  }
+
+  updateTrigger(trigger) {
+    if (trigger.classList.contains('is-active')) {
+      trigger.classList.remove('is-active');
+    } else {
+      trigger.classList.add('is-active');
+    }
+  }
 
 }
 
