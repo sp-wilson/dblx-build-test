@@ -1,6 +1,31 @@
 .c-welcome-banner {
     position: relative;
 
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 27%;
+        z-index: 1;
+
+        width: 1px;
+        height: 100vh;
+
+        background-color: $colour-tertiary;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 27%;
+
+        width: 1px;
+        height: 100vh;
+
+        background-color: $colour-tertiary;
+    }
+
     &__left {
         position: absolute;
         top: 0;
@@ -64,11 +89,9 @@
 
         &-line {
             position: absolute;
-            top: 10px;
+            top: 8px;
             left: 0;
             width: 40px;
-            height: 1px;
-            background-color: $colour-primary;
         }
     }
 
@@ -95,5 +118,48 @@
         letter-spacing: 4.8px;
  
         transform: rotate(90deg);
+    }
+
+
+    &__label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include font-size($size-milli);
+        
+        &-line {
+            position: relative;
+            width: 40px;
+            height: 2px;
+            margin: 0 $global-spacing-s;
+            background-color: $colour-primary;
+
+            &::after{
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                width: 10px;
+                height: 2px;
+
+                background-color: $colour-tertiary;
+            }
+        }
+
+        &-copy {
+            margin-left: $global-spacing-s + 0.5;
+            @include font-size($size-zeta);
+            font-weight: 300;
+        }
+    }
+    &__heading {
+
+    }
+    &__subheading {
+
+    }
+    &__text-overlay {
+
     }
 }

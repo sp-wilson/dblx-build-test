@@ -188,7 +188,7 @@
                     "name": "image",
                     "type": "clone",
                     "instructions": "",
-                    "required": 0,
+                    "required": "Text overlay Bottom",
                     "conditional_logic": [
                         [
                             {
@@ -504,5 +504,5 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1604598716
+    "modified": 1604689001
 }

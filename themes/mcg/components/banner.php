@@ -35,7 +35,11 @@
     <div class="c-carousel">
         <div class="c-carousel__slider  js-carousel" data-set-gallery-size <?= $autoplay ? "data-autoplay" : null; ?> <?= $carousel_mq ? "data-carousel-mq=\"{$carousel_mq}\"" : null; ?> data-settings="setGallerySize autoPlay watchCss">
 
-            <?php foreach ( $slides as $slide ): ?>
+            <?php 
+                $count = 1; 
+                $total_count = count($slides);
+                foreach ( $slides as $slide ): 
+            ?>
                 <div class="c-carousel__slide  c-carousel__slide--banner">
 
                     <?php switch ($slide['media_type']) {
@@ -69,7 +73,7 @@
                         <div class="c-overlay"></div>
                     <?php endif; ?>
                 </div>
-            <?php endforeach; ?>
+            <?php $count++; endforeach; ?>
 
         </div>
 

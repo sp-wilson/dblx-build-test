@@ -2,14 +2,33 @@
 
     if ( !isset( $content ) || !$content ) return;
 
-    $alignment = $content['alignment'] ? $content['alignment'] : 'center';
-
+    $alignment           = $content['alignment'] ? $content['alignment'] : 'center';
+    $label               = $content['label'];
+    $heading             = $content['heading'];
+    $subheading          = $content['subheading'];
+    $text_overlay_top    = $content['text_overlay_top'];
+    $text_overlay_bottom = $content['text_overlay_bottom'];
 ?>
 
 <div class="c-content  c-content--banner">
     <div class="c-content__inner  c-content__inner--<?= $alignment; ?>">
-        <?php $wysiwyg = $content['content']; ?>
-        <?php if ( $wysiwyg && strlen($wysiwyg) > 0 ) echo $wysiwyg; ?>
+
+        <label class="c-welcome-banner__label">
+            <?= ($count > 10) ?: "0" . $count ?>
+            <span class="c-welcome-banner__label-line"></span> 
+            <?= ($total_count > 10) ?: "0" . $total_count ?>
+            <h3 class="c-welcome-banner__label-copy">
+                <?= $label ?>
+            </h3>
+        </label>
+
+        <h1 class="c-welcome-banner__heading  t-font-size--beta  t-font-family--secondary">
+            <?= $heading ?>
+        </h1>
+
+        <h2 class="c-welcome-banner__subheading  t-font-size--delta  t-font-family--primary t-font-weight--300">
+            <?= $subheading ?>
+        </h2>
 
         <?php if ( $content['buttons'] ): ?>
             <footer class="c-content__cta-group  c-content__cta-group--pushed">
@@ -21,4 +40,24 @@
     </div>
 </div>
 
-<?php $content = null; ?>
+
+<div class="c-welcome-banner__text-overlay">
+
+    <div class="c-welcome-banner__text-overlay--top">
+        <?= $subheading ?>
+    </div>
+
+    <div class="c-welcome-banner__text-overlay--bottom">
+        <?= $subheading ?>
+    </div>
+
+</div>
+
+<?php 
+    // Reset variables to stop inheritance 
+    $label               = null;
+    $heading             = null;
+    $subheading          = null;
+    $text_overlay_top    = null;
+    $text_overlay_bottom = null;
+?>
