@@ -22,10 +22,10 @@
 $header-mq: $mq-mob--med;
 $header-mq-m: $mq-mob--lrg;
 $header-mq-l: $mq-desk--lrg;
-$header-logo-width: 230px;
+$header-logo-width: 215px;
 
 .c-header {
-    padding: $global-spacing-s 0;
+    padding: $global-spacing 0;
 
     &--sticky {
         @include _position(fixed, 0, 0, null, 0);
@@ -48,7 +48,7 @@ $header-logo-width: 230px;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        padding: 0 $global-spacing / 2;
+        padding: 0 $global-spacing;
     }
     
     &__left {
@@ -58,21 +58,8 @@ $header-logo-width: 230px;
 
     &__brand {
         display: flex;
-        margin-right: $global-spacing;
+        margin-left: $global-spacing + 2;
         @include z-index(header);
-
-        // Centralised Logo
-        &--island {
-            @include _position(relative, null, 0, null, 0);
-            width: $header-logo-width - 100;
-            margin-right: auto;
-            margin-left: 0;
-
-            @include mq($header-mq-l, min) {
-                position: absolute;
-                margin: auto;
-            }
-        }
     }
 
     &__nav {
@@ -111,7 +98,9 @@ $header-logo-width: 230px;
             }
         }
     }
+    
     &__language {
+        margin-right: $global-spacing-s;
         font-family: $font-secondary;
         @include font-size($size-epsilon);
     }

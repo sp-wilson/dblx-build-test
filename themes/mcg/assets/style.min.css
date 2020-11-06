@@ -1279,7 +1279,7 @@ small {
   justify-content: center; }
 
 .c-brand {
-  width: 355px;
+  width: 215px;
   height: 40px; }
 
 .c-carousel {
@@ -1466,7 +1466,7 @@ small {
       transition: bottom 0.075s ease, transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1); }
 
 .c-header {
-  padding: 1rem 0; }
+  padding: 3rem 0; }
   .c-header--sticky {
     position: fixed;
     top: 0;
@@ -1486,25 +1486,14 @@ small {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0 1.5rem; }
+    padding: 0 3rem; }
   .c-header__left {
     display: flex;
     align-items: center; }
   .c-header__brand {
     display: flex;
-    margin-right: 3rem;
+    margin-left: 5rem;
     z-index: 2; }
-    .c-header__brand--island {
-      position: relative;
-      right: 0;
-      left: 0;
-      width: 130px;
-      margin-right: auto;
-      margin-left: 0; }
-      @media screen and (min-width: 1440px) {
-        .c-header__brand--island {
-          position: absolute;
-          margin: auto; } }
   .c-header__nav {
     display: flex;
     flex-grow: 1;
@@ -1528,15 +1517,16 @@ small {
         .c-header__nav--secondary .is-centre::before {
           content: "";
           display: flex;
-          width: 230px; } }
+          width: 215px; } }
   .c-header__language {
+    margin-right: 1rem;
     font-family: "gilroybold", sans-serif;
     font-size: 2.1rem; }
 
 .c-ico {
   display: inline-flex;
-  width: 32px;
-  height: 32px;
+  width: 15px;
+  height: 15px;
   fill: currentColor; }
 
 .c-nav {
@@ -1715,6 +1705,73 @@ small {
       .c-video__play-btn[data-state="playing"]:hover::before {
         border-right-color: #f06e07;
         border-left-color: #f06e07; }
+
+.c-welcome-banner {
+  position: relative; }
+  .c-welcome-banner__left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100vh;
+    border-right: 1px solid #c0c3c5; }
+    @media screen and (min-width: 640px) {
+      .c-welcome-banner__left {
+        display: flex; } }
+  .c-welcome-banner__right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100vh;
+    border-left: 1px solid #c0c3c5; }
+    @media screen and (min-width: 640px) {
+      .c-welcome-banner__right {
+        display: flex; } }
+  .c-welcome-banner__scroll {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    width: 100vh;
+    padding-right: 3rem;
+    transform: rotate(90deg); }
+    .c-welcome-banner__scroll-inner {
+      position: relative;
+      font-size: 1.2rem;
+      line-height: 1.8;
+      text-align: right;
+      text-transform: uppercase;
+      letter-spacing: 4.8px; }
+    .c-welcome-banner__scroll-line {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      width: 40px;
+      height: 1px;
+      background-color: #000; }
+  .c-welcome-banner__social {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(-50%); }
+  .c-welcome-banner__message {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    width: 100vh;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 4.8px;
+    transform: rotate(90deg); }
 
 .u-m-0 {
   margin: 0px; }
@@ -2692,5 +2749,3 @@ small {
   white-space: nowrap;
   width: 1px; }
 
-
-/*# sourceMappingURL=style.min.css.map*/
