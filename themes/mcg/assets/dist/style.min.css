@@ -96,7 +96,7 @@
 
 @-webkit-keyframes fadeInLeft {
   from {
-    transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
     opacity: 0; }
   to {
     transform: translate3d(0, 0, 0);
@@ -104,7 +104,7 @@
 
 @keyframes fadeInLeft {
   from {
-    transform: translate3d(-20%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
     opacity: 0; }
   to {
     transform: translate3d(0, 0, 0);
@@ -112,7 +112,7 @@
 
 @-webkit-keyframes fadeInRight {
   from {
-    transform: translate3d(20%, 0, 0);
+    transform: translate3d(100%, 0, 0);
     opacity: 0; }
   to {
     transform: translate3d(0, 0, 0);
@@ -120,11 +120,39 @@
 
 @keyframes fadeInRight {
   from {
-    transform: translate3d(20%, 0, 0);
+    transform: translate3d(100%, 0, 0);
     opacity: 0; }
   to {
     transform: translate3d(0, 0, 0);
     opacity: 1; } }
+
+@-webkit-keyframes slideInLeft {
+  from {
+    transform: translate3d(-1000%, 0, 0);
+    opacity: 0; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-1000%, 0, 0);
+    opacity: 0; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@-webkit-keyframes slideInRight {
+  from {
+    transform: translate3d(1000%, 0, 0);
+    opacity: 0; }
+  to {
+    transform: translate3d(0, 0, 0); } }
+
+@keyframes slideInRight {
+  from {
+    transform: translate3d(1000%, 0, 0);
+    opacity: 0; }
+  to {
+    transform: translate3d(0, 0, 0); } }
 
 /*
 	This mixin can be used to set the object-fit:
@@ -1400,7 +1428,8 @@ small {
       align-items: center;
       justify-content: center;
       width: 100%;
-      height: 100vh; }
+      height: 100vh;
+      padding-bottom: 51.04167%; }
     .c-carousel__slide--gallery {
       height: 300px; }
   .c-carousel__nav {
@@ -1475,7 +1504,7 @@ small {
     top: 0;
     right: 0;
     left: 0;
-    z-index: 1;
+    z-index: 2;
     height: 100%;
     pointer-events: none;
     color: #000; }
@@ -1719,7 +1748,15 @@ small {
   z-index: 3;
   display: none;
   width: 100%;
-  padding: 0 12rem; }
+  padding: 0 12rem;
+  -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 0.7s;
+          animation-duration: 0.7s;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both; }
   @media screen and (min-width: 768px) {
     .c-page-navigation {
       display: block; } }
@@ -1952,6 +1989,15 @@ small {
     flex-direction: row;
     align-items: center;
     font-size: 1.2rem; }
+    .is-selected .c-welcome-banner__label {
+      -webkit-animation-name: fadeInLeft;
+              animation-name: fadeInLeft;
+      -webkit-animation-duration: 0.8s;
+              animation-duration: 0.8s;
+      -webkit-animation-delay: 1.2s;
+              animation-delay: 1.2s;
+      -webkit-animation-fill-mode: both;
+              animation-fill-mode: both; }
     .c-welcome-banner__label-line {
       position: relative;
       width: 40px;
@@ -1959,7 +2005,7 @@ small {
       margin: 0 1rem;
       background-color: #000; }
       .c-welcome-banner__label-line::after {
-        content: '';
+        content: "";
         position: absolute;
         top: 0;
         right: 0;
@@ -1973,6 +2019,33 @@ small {
   .c-welcome-banner__headings {
     position: relative;
     width: 100%; }
+  .is-selected .c-welcome-banner__heading {
+    -webkit-animation-name: fadeInLeft;
+            animation-name: fadeInLeft;
+    -webkit-animation-duration: 0.9s;
+            animation-duration: 0.9s;
+    -webkit-animation-delay: 1.2s;
+            animation-delay: 1.2s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both; }
+  .is-selected .c-welcome-banner__subheading {
+    -webkit-animation-name: fadeInLeft;
+            animation-name: fadeInLeft;
+    -webkit-animation-duration: 0.9s;
+            animation-duration: 0.9s;
+    -webkit-animation-delay: 1.4s;
+            animation-delay: 1.4s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both; }
+  .is-selected .c-welcome-banner__ctas {
+    -webkit-animation-name: fadeInLeft;
+            animation-name: fadeInLeft;
+    -webkit-animation-duration: 0.7s;
+            animation-duration: 0.7s;
+    -webkit-animation-delay: 1.8s;
+            animation-delay: 1.8s;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both; }
   .c-welcome-banner__text-overlay {
     position: absolute;
     top: 50%;
@@ -2013,11 +2086,29 @@ small {
           font-size: 20rem; } }
     .c-welcome-banner__text-overlay--top {
       left: -435px; }
+      .is-selected .c-welcome-banner__text-overlay--top {
+        -webkit-animation-name: slideInLeft;
+                animation-name: slideInLeft;
+        -webkit-animation-duration: 0.7s;
+                animation-duration: 0.7s;
+        -webkit-animation-delay: 1.5s;
+                animation-delay: 1.5s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both; }
       @media screen and (min-width: 1280px) {
         .c-welcome-banner__text-overlay--top {
           left: -573px; } }
     .c-welcome-banner__text-overlay--bottom {
       left: -28px; }
+      .is-selected .c-welcome-banner__text-overlay--bottom {
+        -webkit-animation-name: slideInRight;
+                animation-name: slideInRight;
+        -webkit-animation-duration: 0.7s;
+                animation-duration: 0.7s;
+        -webkit-animation-delay: 1.5s;
+                animation-delay: 1.5s;
+        -webkit-animation-fill-mode: both;
+                animation-fill-mode: both; }
       @media screen and (min-width: 1280px) {
         .c-welcome-banner__text-overlay--bottom {
           left: -31px; } }

@@ -10,6 +10,11 @@
 
     padding: 0 $global-spacing-l + 1;
 
+    animation-name: fadeIn;
+    animation-duration: 0.7s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+
     @include mq($mq-tab) {
         display: block;
     }

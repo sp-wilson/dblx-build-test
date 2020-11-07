@@ -33,14 +33,14 @@
 <section class="o-row  o-row--n  c-welcome-banner" data-layout="<?= $row['acf_fc_layout']; ?>">
 
     <div class="c-carousel">
-        <div class="c-carousel__slider  js-carousel" data-set-gallery-size <?= $autoplay ? "data-autoplay" : null; ?> <?= $carousel_mq ? "data-carousel-mq=\"{$carousel_mq}\"" : null; ?> data-settings="setGallerySize autoPlay watchCss">
+        <div class="c-carousel__slider  js-carousel" data-set-gallery-size <?= $autoplay ? "data-autoplay" : null; ?> <?= $carousel_mq ? "data-carousel-mq=\"{$carousel_mq}\"" : null; ?> data-settings="setGallerySize watchCss">
 
             <?php 
                 $count = 1; 
                 $total_count = count($slides);
                 foreach ( $slides as $slide ): 
             ?>
-                <div class="c-carousel__slide  c-carousel__slide--banner">
+                <div class="c-carousel__slide  c-carousel__slide--banner<?= ($total_count < 1) ?: "  is-selected" ?>">
 
                     <?php switch ($slide['media_type']) {
                         case 'image':

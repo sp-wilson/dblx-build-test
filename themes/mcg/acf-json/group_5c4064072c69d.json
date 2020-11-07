@@ -129,7 +129,7 @@
         },
         {
             "key": "field_5fa59b62fdce8",
-            "label": "Text overlay Top",
+            "label": "Text Overlay Top",
             "name": "text_overlay_top",
             "type": "text",
             "instructions": "",
@@ -140,7 +140,7 @@
                 "class": "",
                 "id": ""
             },
-            "default_value": "through technology",
+            "default_value": "",
             "placeholder": "",
             "prepend": "",
             "append": "",
@@ -148,7 +148,7 @@
         },
         {
             "key": "field_5fa59bc76c297",
-            "label": "Text overlay Bottom",
+            "label": "Text Overlay Bottom",
             "name": "text_overlay_bottom",
             "type": "text",
             "instructions": "",
@@ -183,5 +183,5 @@
     "hide_on_screen": "",
     "active": false,
     "description": "",
-    "modified": 1604692831
+    "modified": 1604755176
 }

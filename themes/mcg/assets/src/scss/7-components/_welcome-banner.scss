@@ -118,6 +118,13 @@
         flex-direction: row;
         align-items: center;
         @include font-size($size-milli);
+
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.8s;
+            animation-delay: 1.2s;
+            animation-fill-mode: both;
+        }
         
         &-line {
             position: relative;
@@ -127,7 +134,7 @@
             background-color: $colour-primary;
 
             &::after{
-                content: '';
+                content: "";
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -148,6 +155,36 @@
     &__headings {
         position: relative;
         width: 100%;
+    }
+
+    &__heading {
+
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.9s;
+            animation-delay: 1.2s;
+            animation-fill-mode: both;
+        }
+    }
+
+    &__subheading {
+ 
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.9s;
+            animation-delay: 1.4s;
+            animation-fill-mode: both;
+        }
+    }
+
+    &__ctas {
+  
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.7s;
+            animation-delay: 1.8s;
+            animation-fill-mode: both;
+        }
     }
 
     &__text-overlay {
@@ -206,6 +243,14 @@
         &--top {
             left: -435px;
 
+
+            .is-selected & {
+                animation-name: slideInLeft;
+                animation-duration: 0.7s;
+                animation-delay: 1.5s;
+                animation-fill-mode: both;
+            }
+
             @include mq($mq-desk--med, min) {
                 left: -573px;
             }
@@ -213,6 +258,13 @@
 
         &--bottom {
             left: -28px;
+
+            .is-selected & {
+                animation-name: slideInRight;
+                animation-duration: 0.7s;
+                animation-delay: 1.5s;
+                animation-fill-mode: both;
+            }
 
             @include mq($mq-desk--med, min) {
                 left: -31px;
