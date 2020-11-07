@@ -26,12 +26,29 @@
 //  <a href="" class="c-btn  c-btn--inactive"><span>Button</span></a>
 
 .c-btn {
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
     @include font-size($size-milli);
     line-height: 1.8;
     text-transform: uppercase;
     letter-spacing: 4.8px;
 
     &--primary {
-        //
+        position: relative;
+
+        span {
+            transform: translateX(0px);
+            transition: transform 0.3s $ease-in-out;
+        }
+
+        &:hover {
+
+            span { 
+                transform: translateX(15px);
+            }
+        }
     }
 }

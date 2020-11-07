@@ -54,6 +54,6 @@ $additional_classes  = isset($additional_classes) ? $additional_classes : '';
 ?>
 
 <a href="<?= $link; ?>" class="c-btn  c-btn--<?= $btn_style ?><?= $trigger; ?><?= '  ' . $additional_classes; ?>"<?= $target; ?>>
-    <svg class="c-ico  c-ico--arrow"><use xlink:href="#icon-arrow-right"></use></svg>
+    <svg class="c-ico  c-ico--arrow  u-mr-20"><use xlink:href="#icon-arrow"></use></svg>
     <span><?= $btn_label; ?></span>
 </a>

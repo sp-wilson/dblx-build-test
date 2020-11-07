@@ -10,20 +10,14 @@
 
         width: 1px;
         height: 100vh;
-
+        
         background-color: $colour-tertiary;
-    }
+        visibility: hidden;
 
-    &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 27%;
+        @include mq($mq-tab, min) {
+            visibility: visible;
+        }
 
-        width: 1px;
-        height: 100vh;
-
-        background-color: $colour-tertiary;
     }
 
     &__left {
@@ -40,7 +34,7 @@
 
         border-right: 1px solid $colour-tertiary;
 
-        @include mq($mq-mob--lrg) {
+        @include mq($mq-tab, min) {
             display: flex;
         }
 
@@ -60,7 +54,7 @@
 
         border-left: 1px solid $colour-tertiary;
 
-        @include mq($mq-mob--lrg) {
+        @include mq($mq-tab, min) {
             display: flex;
         }
 
@@ -76,8 +70,6 @@
 
         transform: rotate(90deg);
 
- 
-        
         &-inner {
             position: relative;
             @include font-size($size-milli);
@@ -153,13 +145,79 @@
             font-weight: 300;
         }
     }
-    &__heading {
-
+    &__headings {
+        position: relative;
+        width: 100%;
     }
-    &__subheading {
 
-    }
     &__text-overlay {
+        position: absolute;
+        top: 50%;
+        right: 20%;
 
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        width: 20px;
+        height: 100%;
+        transform: translateY(-50%);
+
+
+        @include mq($mq-tab, min) {
+            display: flex;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            z-index: 1;
+
+            width: 1px;
+            height: 100vh;
+            background-color: $colour-tertiary;
+
+            transform: translateY(-50%);
+        }
+
+        &-inner {
+            position: relative;
+            width: 100%;
+            transform: rotate(90deg);
+            transform-origin: center;
+        }
+
+        &--top,
+        &--bottom {
+            position: relative;
+            width: 100%;
+            font-family: $font-secondary;
+            @include font-size(150);
+            line-height: 0.9;
+            opacity: 0.3;
+
+            @include mq($mq-desk--med, min) {
+                @include font-size(200);
+            }
+        }
+
+        &--top {
+            left: -435px;
+
+            @include mq($mq-desk--med, min) {
+                left: -573px;
+            }
+        }
+
+        &--bottom {
+            left: -28px;
+
+            @include mq($mq-desk--med, min) {
+                left: -31px;
+            }
+        }
+        
     }
 }

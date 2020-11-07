@@ -22,13 +22,29 @@
             </h3>
         </label>
 
-        <h1 class="c-welcome-banner__heading  t-font-size--beta  t-font-family--secondary">
-            <?= $heading ?>
-        </h1>
+        <div class="c-welcome-banner__headings">
 
-        <h2 class="c-welcome-banner__subheading  t-font-size--delta  t-font-family--primary t-font-weight--300">
-            <?= $subheading ?>
-        </h2>
+            <h1 class="c-welcome-banner__heading  t-font-size--beta  t-font-family--secondary">
+                <?= $heading ?>
+            </h1>
+    
+            <h2 class="c-welcome-banner__subheading  t-font-size--delta  t-font-family--primary t-font-weight--300">
+                <?= $subheading ?>
+            </h2>
+
+            <div class="c-welcome-banner__text-overlay">
+                <div class="c-welcome-banner__text-overlay-inner">
+                    <div class="c-welcome-banner__text-overlay--top">
+                        <?= $text_overlay_top ?>
+                    </div>
+
+                    <div class="c-welcome-banner__text-overlay--bottom">
+                        <?= $text_overlay_bottom ?>
+                    </div>    
+                </div>
+            </div>
+
+        </div>
 
         <?php if ( $content['buttons'] ): ?>
             <footer class="c-content__cta-group  c-content__cta-group--pushed">
@@ -41,17 +57,7 @@
 </div>
 
 
-<div class="c-welcome-banner__text-overlay">
 
-    <div class="c-welcome-banner__text-overlay--top">
-        <?= $subheading ?>
-    </div>
-
-    <div class="c-welcome-banner__text-overlay--bottom">
-        <?= $subheading ?>
-    </div>
-
-</div>
 
 <?php 
     // Reset variables to stop inheritance 
