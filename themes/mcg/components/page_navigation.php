@@ -3,13 +3,20 @@
 ?>
 
 <section class="c-page-navigation">
-    <?php $count = 1; foreach ($navigation_items as $navigation_item): ?>
 
-        <a class="c-page-navigation__item" href="<?= $navigation_item["item_id"] ?>">
-            <?= ($count > 10) ?: "0" . $count ?>
-            <?= $navigation_item["item_label"] ?>
-        </a>
+    <div class="c-carousel__slider  c-page-navigation__slider  js-carousel" data-settings="setGallerySize  watchCss  noWrap" data-align="center">
+        <?php $count = 1; foreach ($navigation_items as $navigation_item): ?>
 
-    <?php $count++; endforeach; ?>
+            <div class="c-page-navigation__item">
+                <a class="c-page-navigation__link" href="<?= $navigation_item["item_id"] ?>">
+                    <?= $navigation_item["item_label"] ?>
+                    <span class="c-page-navigation__link-number">
+                        <?= ($count > 10) ?: "0" . $count ?>
+                    </span>
+                </a>
+            </div>
+
+        <?php $count++; endforeach; ?>
+    </div>
 
 </section>

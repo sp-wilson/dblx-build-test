@@ -20,15 +20,27 @@ class Carousel {
     createCarousel() {
         const settings = this.element.getAttribute("data-settings") || "";
 
+        let slideAlign = "";
+        switch (this.element.getAttribute("data-align")) { 
+            case "center":
+                slideAlign = "center";
+                break;
+            case "right":
+                slideAlign = "right";
+                break;
+            default:
+                slideAlign = "left";
+        }
+
         this.carousel = new Flickpity(this.element, {
             autoPlay: settings.includes("autoPlay") ? 4000 : false,
-            cellAlign: "left",
+            cellAlign: slideAlign,
             pageDots: false,
             prevNextButtons: false,
             setGallerySize: settings.includes("setGallerySize"),
             adaptiveHeight: settings.includes("adaptiveHeight"),
             watchCSS: settings.includes("watchCss"),
-            wrapAround: true,
+            wrapAround: settings.includes("noWrap") ? false : true ,
             on: {
                 ready: () => {
                     this.element.classList.add("flickity-ready");
@@ -38,6 +50,9 @@ class Carousel {
                 },
             },
         });
+
+
+        console.log(this.carousel);
     }
 
     carouselArrows() {
