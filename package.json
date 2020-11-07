@@ -7,7 +7,7 @@
     "scripts": {
         "start": "webpack --config .webpack/webpack.config.js",
         "dev": "docker-compose up -d && webpack --watch --config .webpack/webpack.config.js --mode development",
-        "prod": "webpack --mode production",
+        "prod": "webpack --config .webpack/webpack.config.js  --mode production",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "dependencies": {
