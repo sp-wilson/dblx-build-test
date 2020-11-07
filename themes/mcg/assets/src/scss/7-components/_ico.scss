@@ -14,7 +14,13 @@
 
 .c-ico {
     display: inline-flex;
-    width: 32px;
-    height: 32px;
+    width: 15px;
+    height: 15px;
     fill: currentColor;
+
+    &--arrow {
+        width: 20px;
+        height: 20px;
+    }
+
 }

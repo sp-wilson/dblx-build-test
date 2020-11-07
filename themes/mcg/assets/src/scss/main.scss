@@ -38,7 +38,7 @@
 @import "4-generic/font-face";
 
 //============================
-//*	$SETTINGS
+//*	$Elements
 //
 
 @import "5-elements/page";
@@ -69,14 +69,18 @@
 //
 
 @import "7-components/brand";
+@import "7-components/btn";
 @import "7-components/carousel";
+@import "7-components/content";
 @import "7-components/footer";
 @import "7-components/hamburger";
 @import "7-components/header";
 @import "7-components/ico";
 @import "7-components/nav";
+@import "7-components/page-navigation";
 @import "7-components/pager";
 @import "7-components/video";
+@import "7-components/welcome-banner";
 
 //============================
 //*	$utilities

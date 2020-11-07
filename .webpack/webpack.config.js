@@ -21,7 +21,7 @@ module.exports = {
         "polyfills-es5": `${THEME_PATH}/src/js/polyfills-es5.ts`,
     },
     output: {
-        path: path.resolve(__dirname, `.${THEME_PATH}`),
+        path: path.resolve(__dirname, `.${THEME_PATH}/dist`),
     },
     module:{
         rules: [
@@ -66,7 +66,7 @@ module.exports = {
     watchOptions: {
         ignored: /node_modules/,
     },
-   plugins: [
+    plugins: [
         new MiniCssExtractPlugin({
             filename: "style.min.css",
         }),
@@ -76,10 +76,15 @@ module.exports = {
             port: 3000,
             logLevel: 'silent',
             proxy: 'http://localhost:8080/',
+            notify: true,
+            snippetOptions: {
+                ignorePaths: "**/wp-admin/**"
+            },
             files: [
                 {
                     match: [
-                        '**/*.php'
+                        "themes/**/*.php",
+                        "themes/**/*.php",
                     ],
                     fn: function(event, file) {
                         if (event === "change") {

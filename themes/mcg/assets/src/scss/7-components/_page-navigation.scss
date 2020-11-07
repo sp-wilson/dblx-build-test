@@ -1,0 +1,59 @@
+.c-page-navigation {
+    $self: &;
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+
+    display: none;
+
+    width: 100%;
+
+    padding: 0 $global-spacing-l + 1;
+
+    animation-name: fadeIn;
+    animation-duration: 0.7s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+
+    @include mq($mq-tab) {
+        display: block;
+    }
+
+
+    &__item {
+        display: flex;
+        justify-content: center;
+        width: percentage(1/5);
+
+        opacity: 0.3;
+
+        &.is-selected {
+            opacity: 0.8;
+
+           & #{$self}__link {
+                border-color: $colour-primary;
+            }
+        }
+    }
+
+    &__link {
+        display: flex;
+        padding-bottom: $global-spacing;
+
+        border-bottom: 3px solid transparent;
+
+        @include font-size($size-milli);
+        text-align: right;
+        text-transform: uppercase;
+        letter-spacing: 4.8px;
+
+        transition: border-bottom 0.3s $ease-in-out;
+        &-number {
+            margin-left: $global-spacing-s;
+            
+            @include font-size(32);
+            line-height: 1;
+        }
+    }
+
+}

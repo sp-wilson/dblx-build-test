@@ -1,0 +1,275 @@
+.c-welcome-banner {
+    position: relative;
+
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 27%;
+        z-index: 1;
+
+        width: 1px;
+        height: 100vh;
+        
+        background-color: $colour-tertiary;
+        visibility: hidden;
+
+        @include mq($mq-tab, min) {
+            visibility: visible;
+        }
+
+    }
+
+    &__left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 100px;
+        height: 100vh;
+
+        border-right: 1px solid $colour-tertiary;
+
+        @include mq($mq-tab, min) {
+            display: flex;
+        }
+
+    }
+
+    &__right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: none;
+
+        align-items: center;
+        justify-content: center;
+
+        width: 100px;
+        height: 100vh;
+
+        border-left: 1px solid $colour-tertiary;
+
+        @include mq($mq-tab, min) {
+            display: flex;
+        }
+
+    }
+
+    &__scroll {
+        position: absolute;
+        display: flex;
+        justify-content: flex-end;
+
+        width: 100vh;
+        padding-right: $global-spacing;
+
+        transform: rotate(90deg);
+
+        &-inner {
+            position: relative;
+            @include font-size($size-milli);
+            line-height: 1.8;
+            text-align: right;
+            text-transform: uppercase;
+            letter-spacing: 4.8px;
+        }
+
+        &-line {
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 40px;
+        }
+    }
+
+    &__social {
+        position: absolute;
+        bottom: $global-spacing;
+        left: 50%;
+        
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transform: translateX(-50%);
+    }
+
+    &__message {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        
+        width: 100vh;
+
+        @include font-size($size-milli);
+        text-transform: uppercase;
+        letter-spacing: 4.8px;
+ 
+        transform: rotate(90deg);
+    }
+
+
+    &__label {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        @include font-size($size-milli);
+
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.8s;
+            animation-delay: 1.2s;
+            animation-fill-mode: both;
+        }
+        
+        &-line {
+            position: relative;
+            width: 40px;
+            height: 2px;
+            margin: 0 $global-spacing-s;
+            background-color: $colour-primary;
+
+            &::after{
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+
+                width: 10px;
+                height: 2px;
+
+                background-color: $colour-tertiary;
+            }
+        }
+
+        &-copy {
+            margin-left: $global-spacing-s + 0.5;
+            @include font-size($size-zeta);
+            font-weight: 300;
+        }
+    }
+    &__headings {
+        position: relative;
+        width: 100%;
+    }
+
+    &__heading {
+
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.9s;
+            animation-delay: 1.2s;
+            animation-fill-mode: both;
+        }
+    }
+
+    &__subheading {
+ 
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.9s;
+            animation-delay: 1.4s;
+            animation-fill-mode: both;
+        }
+    }
+
+    &__ctas {
+  
+        .is-selected & {
+            animation-name: fadeInLeft;
+            animation-duration: 0.7s;
+            animation-delay: 1.8s;
+            animation-fill-mode: both;
+        }
+    }
+
+    &__text-overlay {
+        position: absolute;
+        top: 50%;
+        right: 20%;
+
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        width: 20px;
+        height: 100%;
+        transform: translateY(-50%);
+
+
+        @include mq($mq-tab, min) {
+            display: flex;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            z-index: 1;
+
+            width: 1px;
+            height: 100vh;
+            background-color: $colour-tertiary;
+
+            transform: translateY(-50%);
+        }
+
+        &-inner {
+            position: relative;
+            width: 100%;
+            transform: rotate(90deg);
+            transform-origin: center;
+        }
+
+        &--top,
+        &--bottom {
+            position: relative;
+            width: 100%;
+            font-family: $font-secondary;
+            @include font-size(150);
+            line-height: 0.9;
+            opacity: 0.3;
+
+            @include mq($mq-desk--med, min) {
+                @include font-size(200);
+            }
+        }
+
+        &--top {
+            left: -435px;
+
+
+            .is-selected & {
+                animation-name: slideInLeft;
+                animation-duration: 0.7s;
+                animation-delay: 1.5s;
+                animation-fill-mode: both;
+            }
+
+            @include mq($mq-desk--med, min) {
+                left: -573px;
+            }
+        }
+
+        &--bottom {
+            left: -28px;
+
+            .is-selected & {
+                animation-name: slideInRight;
+                animation-duration: 0.7s;
+                animation-delay: 1.5s;
+                animation-fill-mode: both;
+            }
+
+            @include mq($mq-desk--med, min) {
+                left: -31px;
+            }
+        }
+        
+    }
+}

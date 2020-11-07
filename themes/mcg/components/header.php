@@ -14,7 +14,8 @@
             <nav class="c-nav  js-nav">
                 <?php bem_menu('primary-navigation', 'c-nav', false, false, true); ?>
             </nav>
-
+            
+            <div class="c-nav__overlay"></div>
             
             <a class="c-header__brand" href="/" title="">
                 <svg class="c-brand"><use xlink:href="#logo"></use></svg>
