@@ -48,7 +48,11 @@ $header-logo-width: 215px;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        padding: 0 $global-spacing;
+        padding: 0 $global-spacing / 2;
+
+        @include mq($header-mq-m, min) {
+            padding: 0 $global-spacing;
+        }
     }
     
     &__left {
@@ -58,8 +62,12 @@ $header-logo-width: 215px;
 
     &__brand {
         display: flex;
-        margin-left: $global-spacing + 2;
+        margin-left: $global-spacing-s;
         @include z-index(header);
+
+        @include mq($header-mq-m, min) {
+            margin-left: $global-spacing + 2;
+        }
     }
 
     &__nav {
@@ -100,8 +108,12 @@ $header-logo-width: 215px;
     }
     
     &__language {
-        margin-right: $global-spacing-s;
+        
         font-family: $font-secondary;
         @include font-size($size-epsilon);
+
+        @include mq($header-mq-m, min) {
+            margin-right: $global-spacing-s;
+        }
     }
 }
