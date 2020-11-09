@@ -84,7 +84,6 @@ module.exports = {
                 {
                     match: [
                         "themes/**/*.php",
-                        "themes/**/*.php",
                     ],
                     fn: function(event, file) {
                         if (event === "change") {
